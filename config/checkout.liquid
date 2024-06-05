@@ -1,0 +1,20 @@
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const emailInput = document.querySelector('input[name="checkout[email]"]');
+    const hotmailMessage = document.createElement('div');
+    hotmailMessage.style.color = 'red';
+    hotmailMessage.innerHTML = 'hotmail emails are not accepted';
+
+    emailInput.addEventListener('input', function() {
+      const emailValue = emailInput.value;
+      const domain = emailValue.split('@');
+      if (domain.includes('hotmail')) {
+        if (!document.contains(hotmailMessage)) {
+          emailInput.parentNode.appendChild(hotmailMessage);
+        }
+      } else {
+        emailInput.parentNode.removeChild(hotmailMessage);
+      }
+    });
+  });
+</script>
